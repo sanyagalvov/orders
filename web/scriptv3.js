@@ -403,7 +403,7 @@ var app = new Vue({
 })
 
 function update_products() {
-    fetch("http://localhost:8080/api/products")
+    fetch("/api/products")
     .then(function (response) {
         return response.json();
     })
@@ -421,7 +421,7 @@ function send_product(name, unit) {
         unit: unit
     }
 
-    fetch("http://localhost:8080/api/products", {
+    fetch("/api/products", {
         method: "POST",
         mode: "same-origin",
         headers: {
@@ -442,8 +442,8 @@ function send_product(name, unit) {
 }
 
 function update_orders(date) {
-    var bell = new Audio("http://localhost:8080/x/bell.mp3")
-    fetch("http://localhost:8080/api/orders/" + date)
+    var bell = new Audio("x/bell.mp3")
+    fetch("api/orders/" + date)
     .then(function (response) {
         return response.json();
     })
@@ -466,7 +466,7 @@ function send_update_order_item(item, aq, bn) {
     item.is_submitted = true
     console.log(item)
 
-    fetch("http://localhost:8080/api/order-items", {
+    fetch("/api/order-items", {
         method: "POST",
         mode: "same-origin",
         headers: {
@@ -491,7 +491,7 @@ function send_update_order(order) {
     order.is_submitted = true
     console.log(order)
 
-    fetch("http://localhost:8080/api/update-order", {
+    fetch("/api/update-order", {
         method: "POST",
         mode: "same-origin",
         headers: {
@@ -526,7 +526,7 @@ function send_order(recipient, date, items, comment) {
         element.is_submitted = false
     });
 
-    fetch("http://localhost:8080/api/orders", {
+    fetch("/api/orders", {
         method: "POST",
         mode: "same-origin",
         headers: {
