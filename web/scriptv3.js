@@ -434,7 +434,11 @@ function send_product(name, unit) {
     })
     .then(function (data) {
         console.log(data)
+        if (app.products == null) {
+            app.products = data
+        } else {
         app.products.push(data)
+        }
     })
     .catch(function (error) {
         console.log("Error: " + error);

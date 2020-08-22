@@ -18,7 +18,7 @@ func main() {
 
 	serverBindAddr := os.Getenv("BIND_ADDR")
 	if serverBindAddr == "" {
-		serverBindAddr = "localhost:8080"
+		serverBindAddr = ":8080"
 	}
 
 	storageAddr := os.Getenv("STORAGE_ADDR")

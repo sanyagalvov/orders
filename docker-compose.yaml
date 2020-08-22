@@ -1,0 +1,21 @@
+version: "3"
+
+services: 
+    api-server:
+        build: .
+        restart: always
+        environment: 
+            - STORAGE_ADDR=postgres
+        ports: 
+            - "8080:8080"
+        depends_on:
+            - "postgres"
+        
+
+    postgres:
+        image: "postgres:12-alpine"
+        volumes:
+            - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+        restart: always
+        environment: 
+            POSTGRES_PASSWORD: "password"
