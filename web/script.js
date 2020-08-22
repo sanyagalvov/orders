@@ -445,9 +445,10 @@ function send_product(name, unit) {
     });
 }
 
+var bell = new Audio("/x/bell.mp3")
 function update_orders(date) {
-    var bell = new Audio("x/bell.mp3")
-    fetch("api/orders/" + date)
+    
+    fetch("/api/orders/" + date)
     .then(function (response) {
         return response.json();
     })
